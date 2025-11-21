@@ -8,12 +8,14 @@ services:
     ports:
       - "4000-4010:4000-4010"
     volumes:
-      - ../files/hl-data:/home/hluser/hl/data
-      - ../files/override_gossip_config.json:/home/hluser/override_gossip_config.json
+      - hl-data:/home/hluser/hl/data
 
   pruner:
     restart: unless-stopped
     build: ./pruner
     volumes:
-      - ../files/hl-data:/home/hluser/hl/data
+      - hl-data:/home/hluser/hl/data
+
+volumes:
+  hl-data:
 

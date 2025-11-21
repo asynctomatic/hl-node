@@ -22,6 +22,9 @@ WORKDIR /home/$USERNAME
 # Configure chain to mainnet
 RUN echo '{"chain": "Mainnet"}' > /home/$USERNAME/visor.json
 
+# Copy override gossip config
+COPY override_gossip_config.json /home/$USERNAME/override_gossip_config.json
+
 # Import GPG public key
 RUN curl -o /home/$USERNAME/pub_key.asc $PUB_KEY_URL \
     && gpg --import /home/$USERNAME/pub_key.asc
